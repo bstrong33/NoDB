@@ -1,0 +1,17 @@
+
+.allPokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.individualPokemon {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+span {
+    color: white;
+}
+

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PokemonList from './PokemonList'
+import TeamName from './TeamName'
+import TeamStats from './TeamStats'
 import './PokemonTeam.css';
 
 class PokemonTeam extends Component {
@@ -8,7 +10,7 @@ class PokemonTeam extends Component {
         super()
 
         this.state = {
-            pokemonTeam: []
+            pokemonTeam: [],
         }
 
         this.deletePokemonFromTeam = this.deletePokemonFromTeam.bind(this)
@@ -23,14 +25,14 @@ class PokemonTeam extends Component {
         })
     }
 
-    addPokemonToTeam( name, img, id ){
+    addPokemonToTeam( name, img, id, hp, attack, defense, spAtk, spDef, speed ){
         if (this.state.pokemonTeam.length < 6){
-        axios.post('/api/pokemon', { name, img, id }).then(response => {
+        axios.post('/api/pokemon', { name, img, id, hp, attack, defense, spAtk, spDef, speed }).then(response => {
             this.setState({
                 pokemonTeam: response.data
             })
         })
-        } else {alert('You can only have 6 pokemon on your team')}
+        } else {alert('You can only have 6 pokemon on your team!')}
     }
 
     deletePokemonFromTeam( id ){
@@ -44,7 +46,7 @@ class PokemonTeam extends Component {
     render() {
         let mappedPokemonTeam = this.state.pokemonTeam.map(teamMember => {
             return (
-                <div className="individualTeamMember" key={teamMember.id}>
+                <div className="individualTeamMember" key={teamMember.uniqueId}>
                     <img alt={teamMember.name} src={teamMember.img} />
                     <span>{teamMember.name}</span>
                     <button onClick={() => this.deletePokemonFromTeam( teamMember.id )}>Delete</button>
@@ -52,11 +54,14 @@ class PokemonTeam extends Component {
             )
         })
         return (
-            <div>
-                    <PokemonList addPokemonFn={this.addPokemonToTeam}/>
-                    <h2>Your Team</h2>
-                <div className="wholeTeam">
+            <div className='pokemonTeamComponent'>
+                <PokemonList addPokemonFn={this.addPokemonToTeam}/>
+                <div className='teamAndName'>
+                    <TeamName />
+                    <div className="wholeTeam">
                     {mappedPokemonTeam}
+                    </div>
+                    <TeamStats wholeTeam={this.state.pokemonTeam}/>   
                 </div>
             </div>
         )

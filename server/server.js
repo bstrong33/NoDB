@@ -10,6 +10,8 @@ app.use(bodyParser.json())
 app.get('/api/pokemon', controller.readPokemonTeam)
 app.delete('/api/pokemon/:id', controller.deletePokemonFromTeam)
 app.post('/api/pokemon', controller.addPokemonToTeam)
+app.get('/api/teamname', controller.readTeamName)
+app.put('/api/teamname', controller.editTeamName)
 
 
 

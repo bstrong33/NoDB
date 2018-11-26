@@ -9,9 +9,26 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.individualPokemon:hover {
+    background-color: grey;
 }
 
 span {
     color: white;
 }
 
+button {
+    color: white;
+    background-color: black;
+    border-radius: 12px;
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    background-color: rgb(77, 24, 88);
+    border: 1px solid white;
+}

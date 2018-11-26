@@ -1,5 +1,29 @@
 .App {
+  /* background-color: grey; */
   background-color: #282c34;
-  display: flex;
 }
 
+.header {
+  height: 130px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokeball {
+  height: 90px;
+}
+
+.title {
+  color: yellow;
+  font-size: 60px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+h3 {
+  color: black;
+  font-size: 90px;
+}
